@@ -12,20 +12,20 @@
 #define	Brightness	0xFF 
 #define X_WIDTH 	128
 #define Y_WIDTH 	64	    						  
-//-----------------OLED IIC¶Ë¿Ú¶¨Òå----------------  					   
+//-----------------OLED IICç«¯å£å®šä¹‰----------------  					   
 
-#define OLED_SCLK_Clr() GPIO_ResetBits(GPIOB,GPIO_Pin_10)//SDA IIC½Ó¿ÚµÄÊ±ÖÓĞÅºÅ
+#define OLED_SCLK_Clr() GPIO_ResetBits(GPIOB,GPIO_Pin_10)//SDA IICæ¥å£çš„æ—¶é’Ÿä¿¡å·
 #define OLED_SCLK_Set() GPIO_SetBits(GPIOB,GPIO_Pin_10)
 
-#define OLED_SDIN_Clr() GPIO_ResetBits(GPIOB,GPIO_Pin_11)//SCL IIC½Ó¿ÚµÄÊı¾İĞÅºÅ
+#define OLED_SDIN_Clr() GPIO_ResetBits(GPIOB,GPIO_Pin_11)//SCL IICæ¥å£çš„æ•°æ®ä¿¡å·
 #define OLED_SDIN_Set() GPIO_SetBits(GPIOB,GPIO_Pin_11)
 
  		     
-#define OLED_CMD  0	//Ğ´ÃüÁî
-#define OLED_DATA 1	//Ğ´Êı¾İ
+#define OLED_CMD  0	//å†™å‘½ä»¤
+#define OLED_DATA 1	//å†™æ•°æ®
 
 
-//OLED¿ØÖÆÓÃº¯Êı
+//OLEDæ§åˆ¶ç”¨å‡½æ•°
 void OLED_ShowChar(u8 x,u8 y,u8 chr,u8 size,u8 mode);
 void OLED_ShowString(u8 x,u8 y,const u8 *p,u8 size);
 void OLED_Init(void);

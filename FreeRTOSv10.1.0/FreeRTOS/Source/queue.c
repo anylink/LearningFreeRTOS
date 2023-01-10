@@ -66,14 +66,14 @@ being used for. */
 
 typedef struct QueuePointers
 {
-	int8_t *pcTail;					/* 指向队列存储区末尾的字节。 分配的字节多于存储队列项所需的字节数，将其用作标记。< Points to the byte at the end of the queue storage area.  Once more byte is allocated than necessary to store the queue items, this is used as a marker. */
-	int8_t *pcReadFrom;				/* 当结构体用于队列时，这个字段指向出队项目中的最后一个 < Points to the last place that a queued item was read from when the structure is used as a queue. */
+	int8_t *pcTail;                     /* 指向队列存储区末尾的字节。 分配的字节多于存储队列项所需的字节数，将其用作标记。< Points to the byte at the end of the queue storage area.  Once more byte is allocated than necessary to store the queue items, this is used as a marker. */
+	int8_t *pcReadFrom;                 /* 当结构体用于队列时，这个字段指向出队项目中的最后一个 < Points to the last place that a queued item was read from when the structure is used as a queue. */
 } QueuePointers_t;
 
 typedef struct SemaphoreData
 {
-	TaskHandle_t xMutexHolder;		 /* 保存互斥锁的任务的句柄 < The handle of the task that holds the mutex. */
-	UBaseType_t uxRecursiveCallCount;/* 当结构体用于互斥量时,用作计数器,保存递归互斥量被"获取"的次数. */< Maintains a count of the number of times a recursive mutex has been recursively 'taken' when the structure is used as a mutex. */
+	TaskHandle_t xMutexHolder;          /* 保存互斥锁的任务的句柄 < The handle of the task that holds the mutex. */
+	UBaseType_t uxRecursiveCallCount;   /* 当结构体用于互斥量时,用作计数器,保存递归互斥量被"获取"的次数. < Maintains a count of the number of times a recursive mutex has been recursively 'taken' when the structure is used as a mutex. */
 } SemaphoreData_t;
 
 /* Semaphores do not actually store or copy data, so have an item size of
