@@ -1366,7 +1366,8 @@ static void prvAddNewTaskToReadyList( TCB_t *pxNewTCB )
 		xAlreadyYielded = xTaskResumeAll();	//恢复调度器
 
 		/* Force a reschedule if xTaskResumeAll has not already done so, we may
-		have put ourselves to sleep. */
+		have put ourselves to sleep. */
+
 		/* 判断是否需要执行一次上下文切换 */
 		if( xAlreadyYielded == pdFALSE )
 		{
@@ -2186,7 +2187,8 @@ BaseType_t xReturn;
 		traceTASK_SWITCHED_IN();
 
 		/* Setting up the timer tick is hardware specific and thus in the
-		portable interface. */
+		portable interface. */
+
 		/* 启动调度器 该函数与硬件相关 在port.c中定义 */
 		if( xPortStartScheduler() != pdFALSE )
 		{
@@ -5390,11 +5392,12 @@ const TickType_t xConstTickCount = xTickCount;
 
 	#if ( INCLUDE_vTaskSuspend == 1 )
 	{
-		if( ( xTicksToWait == portMAX_DELAY ) && ( xCanBlockIndefinitely != pdFALSE ) )
+		if( ( xTicksToWait == portMAX_DELAY ) && ( xCanBlockIndefinitely != pdFALSE ) )		// <! 如果延时节拍为最大值，且能无限期阻塞，就将其更改到挂起列表
 		{
 			/* Add the task to the suspended task list instead of a delayed task
 			list to ensure it is not woken by a timing event.  It will block
 			indefinitely. */
+			/*任务从延时任务列表更改到挂起任务列表，确保该任务不会被定时事件唤醒。该任务将无限期阻塞*/
 			vListInsertEnd( &xSuspendedTaskList, &( pxCurrentTCB->xStateListItem ) );
 		}
 		else
